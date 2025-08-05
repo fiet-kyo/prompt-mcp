@@ -14,16 +14,32 @@ Amazon Q용 커스텀 프롬프트를 위한 MCP(Model Context Protocol) 서버�
 
 ## 설치 및 실행
 
-### 의존성 설치
+### 방법 1: NPM 패키지 사용 (권장)
 ```bash
-npm install
+# MCP 설정에서 직접 사용
+npx fiet-kyo-prompt-mcp
 ```
 
-### 서버 실행
+### 방법 2: 로컬 개발
 ```bash
+# 의존성 설치
+npm install
+
+# 서버 실행
 npm start
-# 또는
-node index.js
+```
+
+## MCP 클라이언트 설정
+
+```json
+{
+  "mcpServers": {
+    "prompt-mcp": {
+      "command": "npx",
+      "args": ["-y", "fiet-kyo-prompt-mcp"]
+    }
+  }
+}
 ```
 
 ## 프롬프트 파일 구조

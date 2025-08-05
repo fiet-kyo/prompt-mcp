@@ -5,6 +5,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { ListPromptsRequestSchema, GetPromptRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join, basename } from 'path';
+import { homedir } from 'os';
 
 const server = new Server({
   name: 'prompt-mcp-server',
@@ -15,7 +16,7 @@ const server = new Server({
   },
 });
 
-const promptsDir = join(process.env.HOME || '/Users/kyo', '.aws', 'amazonq', 'prompts');
+const promptsDir = join(homedir(), '.aws', 'amazonq', 'prompts');
 
 server.setRequestHandler(ListPromptsRequestSchema, async () => {
   try {
