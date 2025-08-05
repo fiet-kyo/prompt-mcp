@@ -2,6 +2,10 @@
 
 Amazon Q용 커스텀 프롬프트를 위한 MCP(Model Context Protocol) 서버입니다.
 
+<a href="https://glama.ai/mcp/servers/@fiet-kyo/prompt-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@fiet-kyo/prompt-mcp/badge" alt="Amazon Q Custom Prompt Server MCP server" />
+</a>
+
 ## 개요
 
 이 MCP 서버는 Amazon Q에서 사용할 수 있는 커스텀 프롬프트를 관리하고 제공합니다. `~/.aws/amazonq/prompts/` 디렉토리에 저장된 마크다운 파일들을 읽어와 MCP 클라이언트에게 프롬프트로 제공합니다.
