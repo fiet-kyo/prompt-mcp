@@ -15,18 +15,29 @@ Amazon Q용 커스텀 프롬프트를 위한 MCP(Model Context Protocol) 서버�
 ## 설치 및 실행
 
 ### 방법 1: NPM 패키지 사용 (권장)
+
+#### .npmrc 설정 (필수)
+
+GitHub Packages에서 패키지를 설치하려면 `.npmrc` 파일 설정이 필요합니다:
+
 ```bash
-# MCP 설정에서 직접 사용
-npx fiet-kyo-prompt-mcp
+# 프로젝트 루트 또는 홈 디렉토리에 .npmrc 파일 생성
+echo "@juvisdiet:registry=https://npm.pkg.github.com" >> .npmrc
+echo "//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN" >> .npmrc
 ```
 
-### 방법 2: 로컬 개발
-```bash
-# 의존성 설치
-npm install
+또는 글로벌 설정:
 
-# 서버 실행
-npm start
+```bash
+npm config set @juvisdiet:registry https://npm.pkg.github.com
+npm config set //npm.pkg.github.com/:_authToken YOUR_GITHUB_TOKEN
+```
+
+#### 패키지 사용
+
+```bash
+# MCP 설정에서 직접 사용
+npx @juvisdiet/q-developer-commands
 ```
 
 ## MCP 클라이언트 설정
@@ -36,7 +47,7 @@ npm start
   "mcpServers": {
     "prompt-mcp": {
       "command": "npx",
-      "args": ["-y", "fiet-kyo-prompt-mcp"]
+      "args": ["-y", "@juvisdiet/q-developer-commands"]
     }
   }
 }
@@ -65,42 +76,7 @@ title: 예시 프롬프트
 여기에 실제 프롬프트 내용을 작성합니다.
 ```
 
-## MCP 프로토콜 지원
 
-### 지원하는 요청
-
-- `prompts/list`: 사용 가능한 모든 프롬프트 목록 반환
-- `prompts/get`: 특정 프롬프트의 내용 반환
-
-### 응답 형식
-
-#### 프롬프트 목록
-```json
-{
-  "prompts": [
-    {
-      "name": "development-rules",
-      "description": "Prompt: development-rules",
-      "arguments": []
-    }
-  ]
-}
-```
-
-#### 프롬프트 내용
-```json
-{
-  "messages": [
-    {
-      "role": "user",
-      "content": {
-        "type": "text",
-        "text": "프롬프트 내용..."
-      }
-    }
-  ]
-}
-```
 
 ## 기술 스택
 
